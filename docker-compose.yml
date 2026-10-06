@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: saas_starter
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U postgres -d saas_starter"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  redis:
+    image: redis:8-alpine
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    ports: ["8025:8025"]
+  api:
+    build: {context: ., dockerfile: apps/api/Dockerfile}
+    environment:
+      API_PORT: 4000
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/saas_starter?schema=public
+      JWT_ACCESS_SECRET: local-access-secret-change-me
+      CORS_ORIGINS: http://localhost:3000
+      MAIL_DRIVER: smtp
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      MAIL_FROM: no-reply@saas.local
+      DEFAULT_ADMIN_EMAIL: admin@example.com
+      DEFAULT_ADMIN_PASSWORD: ChangeMe_123!
+    depends_on:
+      postgres: {condition: service_healthy}
+    ports: ["4000:4000"]
+    command: sh -c "npx prisma --schema apps/api/prisma/schema.prisma migrate deploy && npx tsx apps/api/prisma/seed.ts && node apps/api/dist/main.js"
+  web:
+    build: {context: ., dockerfile: apps/web/Dockerfile}
+    environment: {NEXT_PUBLIC_API_URL: http://localhost:4000}
+    depends_on: [api]
+    ports: ["3000:3000"]
+volumes:
+  postgres_data:
