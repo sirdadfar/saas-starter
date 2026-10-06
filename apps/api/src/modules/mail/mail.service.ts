@@ -1,0 +1,4 @@
+import { Injectable, Logger } from '@nestjs/common';
+import { createTransport } from 'nodemailer';
+export interface MailMessage{to:string;subject:string;text:string;html?:string}
+@Injectable() export class MailService { private logger=new Logger(MailService.name); async send(m:MailMessage){if((process.env.MAIL_DRIVER??'console')==='console'){this.logger.log('mail to='+m.to+' subject='+m.subject+' token='+m.text);return;}const t=createTransport({host:process.env.SMTP_HOST,port:Number(process.env.SMTP_PORT??587),secure:Number(process.env.SMTP_PORT??587)===465,auth:process.env.SMTP_USER?{user:process.env.SMTP_USER,pass:process.env.SMTP_PASSWORD}:undefined});await t.sendMail({from:process.env.MAIL_FROM,...m});} }
