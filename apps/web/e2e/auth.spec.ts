@@ -1,0 +1,1 @@
+import{test,expect}from'@playwright/test';test('landing page leads to registration',async({page})=>{await page.goto('/');await expect(page.getByRole('heading',{name:/Ship the product/i})).toBeVisible();await page.getByRole('link',{name:'Start building'}).click();await expect(page).toHaveURL(/register/)});
