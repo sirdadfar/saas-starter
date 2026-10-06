@@ -14,7 +14,6 @@ jobs:
         image: postgres:17-alpine
         env: {POSTGRES_USER: postgres, POSTGRES_PASSWORD: postgres, POSTGRES_DB: saas_starter}
         ports: ["5432:5432"]
-        options: --health-cmd "pg_isready -U postgres -d saas_starter" --health-interval 5s --health-timeout 5s --health-retries 10
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/saas_starter?schema=public
       JWT_ACCESS_SECRET: ci-access-secret
