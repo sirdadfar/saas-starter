@@ -1,0 +1,2 @@
+'use client';
+export function Button({className='',...props}:React.ButtonHTMLAttributes<HTMLButtonElement>){return <button className={'inline-flex h-10 items-center justify-center rounded-lg bg-black px-4 text-sm font-medium text-white transition hover:opacity-90 disabled:opacity-50 dark:bg-white dark:text-black '+className}{...props}/> }
