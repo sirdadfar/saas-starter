@@ -12,6 +12,8 @@ Production-minded full-stack SaaS boilerplate built with Next.js, NestJS, Postgr
 2. docker compose up --build
 3. Open http://localhost:3000
 
+For local hot reload, use `docker compose -f docker-compose.dev.yml up --build`.
+
 MailHog is available at http://localhost:8025. The seeded admin account is controlled by DEFAULT_ADMIN_EMAIL and DEFAULT_ADMIN_PASSWORD. Change the password before using this outside local development.
 
 ## Architecture
@@ -24,6 +26,17 @@ flowchart LR
   API --> Redis[(Redis)]
   API --> Mail[MailHog / SMTP]
   API --> Stripe[Optional billing]
+```
+
+## Project layout
+
+```text
+apps/
+  api/       NestJS API, Prisma schema, migrations and tests
+  web/       Next.js App Router application and browser tests
+packages/
+  shared/    framework-neutral Zod schemas and TypeScript contracts
+.github/     CI and dependency automation
 ```
 
 ## Included
@@ -96,6 +109,10 @@ Create a feature directory in apps/api/src/modules, add its Prisma model and mig
 ## Design decisions
 
 Prisma is used for typed database access and readable migrations. Refresh credentials are HTTP-only cookies and only their hashes are persisted. Access tokens are short-lived. Redis is an operational dependency for production rate limiting/session controls but the starter remains easy to boot locally.
+
+## Quality gates
+
+The repository keeps quality checks close to the developer workflow: linting, strict type checking, API/web tests and production builds are executed by CI. Authentication tests include refresh-token rotation, reuse detection and the concurrent-claim path.
 
 ## Deployment
 
