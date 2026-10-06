@@ -1,0 +1,2 @@
+'use client';
+export function Input({className='',...props}:React.InputHTMLAttributes<HTMLInputElement>){return <input className={'h-10 w-full rounded-lg border border-neutral-200 bg-transparent px-3 text-sm outline-none focus:ring-2 focus:ring-neutral-400 dark:border-neutral-800 '+className}{...props}/>}
