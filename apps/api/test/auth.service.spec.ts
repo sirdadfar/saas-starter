@@ -1,0 +1,1 @@
+import{AuthService}from'../src/modules/auth/auth.service';describe('AuthService',()=>{it('defines the authentication boundary',()=>expect(AuthService).toBeDefined())});
