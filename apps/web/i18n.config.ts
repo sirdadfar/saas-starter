@@ -1,0 +1,1 @@
+export const locales=['en','fa'] as const;export type Locale=(typeof locales)[number];export const defaultLocale='en';export const isRtl=(locale:Locale)=>locale==='fa';
