@@ -1,1 +1,41 @@
-{"name":"@saas/web","version":"1.0.0","private":true,"scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"eslint .","typecheck":"tsc --noEmit","test":"vitest run","test:e2e":"playwright test"},"dependencies":{"@saas/shared":"workspace:*","@tanstack/react-query":"^5.90.2","next":"^15.5.6","next-intl":"^4.3.0","next-themes":"^0.4.6","react":"^19.1.1","react-dom":"^19.1.1","sonner":"^2.0.7","tailwindcss":"^4.1.14","@tailwindcss/postcss":"^4.1.14"},"devDependencies":{"@playwright/test":"^1.55.0","@testing-library/jest-dom":"^6.9.1","@testing-library/react":"^16.3.0","@types/node":"^24.7.2","@types/react":"^19.1.15","@types/react-dom":"^19.1.9","@vitejs/plugin-react":"^5.0.4","eslint":"^9.37.0","jsdom":"^27.0.0","typescript":"^5.9.3","vitest":"^3.2.4"}}
+{
+  "name": "@saas/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@saas/shared": "workspace:*",
+    "@tanstack/react-query": "^5.90.2",
+    "next": "^15.5.6",
+    "next-intl": "^4.3.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "sonner": "^2.0.7",
+    "tailwindcss": "^4.1.14",
+    "@tailwindcss/postcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.7.2",
+    "@types/react": "^19.1.15",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.37.0",
+    "jsdom": "^27.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
+    "@typescript-eslint/parser": "^8.46.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.0"
+  }
+}
