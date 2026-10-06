@@ -12,13 +12,12 @@ MailHog در http://localhost:8025 در دسترس است. حساب admin اول
 
 ## امکانات
 
-- احراز هویت امن با Argon2 و JWT cookie
+- احراز هویت با Argon2 و cookieهای HTTP-only
 - refresh token چرخشی و تشخیص reuse
 - RBAC برای USER و ADMIN
-- سازمان و نقش OWNER/MEMBER با tenant isolation
+- سازمان و OWNER/MEMBER با tenant isolation
 - Projects به عنوان ماژول نمونه
-- Prisma و migration
-- Swagger، health check، audit log و Docker
-- داشبورد responsive و ساختار آماده انگلیسی/فارسی RTL
+- Prisma migration، Swagger، health check و audit log
+- Docker، CI و ساختار آماده انگلیسی/فارسی RTL
 
-معماری و راهنمای افزودن ماژول در README انگلیسی آمده است.
+جزئیات معماری و راهنمای توسعه در README انگلیسی قرار دارد.
